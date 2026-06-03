@@ -1,0 +1,31 @@
+{% if kind == "lead_status" %}
+  {% if value == "Won" %}
+    <span class="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-1 text-xs font-medium text-emerald-200">{{ value }}</span>
+  {% elif value == "Lost" %}
+    <span class="rounded-full border border-rose-300/30 bg-rose-300/10 px-2.5 py-1 text-xs font-medium text-rose-200">{{ value }}</span>
+  {% elif value == "Qualified" %}
+    <span class="rounded-full border border-violet-300/30 bg-violet-300/10 px-2.5 py-1 text-xs font-medium text-violet-200">{{ value }}</span>
+  {% elif value == "In Progress" %}
+    <span class="rounded-full border border-amber-300/30 bg-amber-300/10 px-2.5 py-1 text-xs font-medium text-amber-200">{{ value }}</span>
+  {% else %}
+    <span class="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-2.5 py-1 text-xs font-medium text-cyan-200">{{ value }}</span>
+  {% endif %}
+{% elif kind == "priority" %}
+  {% if value == "High" %}
+    <span class="rounded-full border border-rose-300/30 bg-rose-300/10 px-2.5 py-1 text-xs font-medium text-rose-200">{{ value }}</span>
+  {% elif value == "Medium" %}
+    <span class="rounded-full border border-amber-300/30 bg-amber-300/10 px-2.5 py-1 text-xs font-medium text-amber-200">{{ value }}</span>
+  {% else %}
+    <span class="rounded-full border border-slate-300/20 bg-slate-300/10 px-2.5 py-1 text-xs font-medium text-slate-200">{{ value }}</span>
+  {% endif %}
+{% elif kind == "task_status" %}
+  {% if value == "Done" %}
+    <span class="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-1 text-xs font-medium text-emerald-200">{{ value }}</span>
+  {% elif value == "In Progress" %}
+    <span class="rounded-full border border-amber-300/30 bg-amber-300/10 px-2.5 py-1 text-xs font-medium text-amber-200">{{ value }}</span>
+  {% else %}
+    <span class="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-2.5 py-1 text-xs font-medium text-cyan-200">{{ value }}</span>
+  {% endif %}
+{% else %}
+  <span class="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-xs font-medium text-slate-200">{{ value }}</span>
+{% endif %}

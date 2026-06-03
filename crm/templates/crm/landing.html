@@ -1,0 +1,49 @@
+{% extends "crm/base.html" %}
+
+{% block title %}ServiceFlow CRM · Portfolio Demo{% endblock %}
+
+{% block landing_content %}
+<main class="sf-grid min-h-screen overflow-hidden">
+  <section class="mx-auto flex min-h-[86vh] max-w-6xl flex-col justify-center px-4 py-12 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <span class="inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-medium text-cyan-100">Portfolio Demo · Read-only</span>
+      <h1 class="mt-6 text-5xl font-semibold tracking-normal text-white sm:text-6xl">ServiceFlow CRM</h1>
+      <p class="mt-4 text-xl font-medium text-cyan-100">Custom CRM for service businesses</p>
+      <p class="mt-5 max-w-2xl text-base leading-7 text-slate-300">
+        A clickable demo CRM for managing leads, clients, deals, tasks, and revenue across cleaning, repair, salon, renovation, and local service workflows.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="{% url 'crm:dashboard' %}" class="rounded-lg bg-cyan-300 px-5 py-3 text-sm font-bold text-[#081014] shadow-lg shadow-cyan-950/40 transition hover:bg-cyan-200">View CRM Demo</a>
+        <a href="{% url 'crm:leads' %}" class="rounded-lg border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Browse Leads</a>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+        <h2 class="text-sm font-semibold text-white">Lead Management</h2>
+        <p class="mt-2 text-sm text-slate-400">Track every inquiry from first contact to qualified opportunity.</p>
+      </div>
+      <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+        <h2 class="text-sm font-semibold text-white">Client Database</h2>
+        <p class="mt-2 text-sm text-slate-400">Keep service customers, companies, sources, and contact details organized.</p>
+      </div>
+      <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+        <h2 class="text-sm font-semibold text-white">Sales Pipeline</h2>
+        <p class="mt-2 text-sm text-slate-400">Visualize open deals, proposals, negotiations, wins, and losses.</p>
+      </div>
+      <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+        <h2 class="text-sm font-semibold text-white">Task Tracking</h2>
+        <p class="mt-2 text-sm text-slate-400">Coordinate calls, estimates, site visits, and follow-ups.</p>
+      </div>
+      <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+        <h2 class="text-sm font-semibold text-white">Revenue Analytics</h2>
+        <p class="mt-2 text-sm text-slate-400">Show pipeline health and won revenue from live database records.</p>
+      </div>
+      <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+        <h2 class="text-sm font-semibold text-white">Service Business Automation</h2>
+        <p class="mt-2 text-sm text-slate-400">Demonstrate the value of a focused custom workflow system.</p>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

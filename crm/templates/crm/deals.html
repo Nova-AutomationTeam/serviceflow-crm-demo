@@ -1,0 +1,41 @@
+{% extends "crm/base.html" %}
+
+{% block title %}Deals · ServiceFlow CRM{% endblock %}
+{% block page_title %}Deals Pipeline{% endblock %}
+
+{% block content %}
+<section class="grid gap-4 xl:grid-cols-5">
+  {% for status, deals in pipeline.items %}
+    <div class="rounded-lg border border-white/10 bg-[#111a21] p-4">
+      <div class="flex items-center justify-between gap-3">
+        <h2 class="text-sm font-semibold text-white">{{ status }}</h2>
+        <span class="rounded-full bg-white/10 px-2 py-0.5 text-xs text-slate-300">{{ deals|length }}</span>
+      </div>
+      <div class="mt-4 space-y-3">
+        {% for deal in deals %}
+          <article class="rounded-lg border border-white/10 bg-[#0d151b] p-4 transition hover:border-cyan-300/30">
+            <h3 class="text-sm font-semibold text-white">{{ deal.title }}</h3>
+            <p class="mt-3 text-2xl font-semibold text-cyan-100">${{ deal.value|floatformat:0 }}</p>
+            <dl class="mt-4 space-y-2 text-xs">
+              <div>
+                <dt class="text-slate-500">Linked lead</dt>
+                <dd class="mt-1 text-slate-300">{{ deal.lead.title }}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500">Client</dt>
+                <dd class="mt-1 text-slate-300">{{ deal.lead.client.company }}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500">Expected close</dt>
+                <dd class="mt-1 text-slate-300">{{ deal.expected_close_date|date:"M j, Y" }}</dd>
+              </div>
+            </dl>
+          </article>
+        {% empty %}
+          <p class="rounded-lg border border-dashed border-white/10 px-4 py-8 text-center text-sm text-slate-500">No deals</p>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</section>
+{% endblock %}

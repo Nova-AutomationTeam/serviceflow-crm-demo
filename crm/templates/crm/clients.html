@@ -1,0 +1,44 @@
+{% extends "crm/base.html" %}
+
+{% block title %}Clients · ServiceFlow CRM{% endblock %}
+{% block page_title %}Clients{% endblock %}
+
+{% block content %}
+<section class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+  {% for client in clients %}
+    <article class="rounded-lg border border-white/10 bg-[#111a21] p-5 transition hover:border-cyan-300/30">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <h2 class="text-base font-semibold text-white">{{ client.name }}</h2>
+          <p class="mt-1 text-sm text-cyan-100">{{ client.company }}</p>
+        </div>
+        {% if client.is_active %}
+          <span class="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-1 text-xs font-medium text-emerald-200">Active</span>
+        {% else %}
+          <span class="rounded-full border border-slate-300/20 bg-slate-300/10 px-2.5 py-1 text-xs font-medium text-slate-300">Inactive</span>
+        {% endif %}
+      </div>
+      <dl class="mt-5 space-y-3 text-sm">
+        <div class="flex justify-between gap-4">
+          <dt class="text-slate-500">Email</dt>
+          <dd class="truncate text-slate-300">{{ client.email }}</dd>
+        </div>
+        <div class="flex justify-between gap-4">
+          <dt class="text-slate-500">Phone</dt>
+          <dd class="text-slate-300">{{ client.phone }}</dd>
+        </div>
+        <div class="flex justify-between gap-4">
+          <dt class="text-slate-500">Source</dt>
+          <dd class="text-slate-300">{{ client.source }}</dd>
+        </div>
+        <div class="flex justify-between gap-4">
+          <dt class="text-slate-500">Created</dt>
+          <dd class="text-slate-300">{{ client.created_at|date:"M j, Y" }}</dd>
+        </div>
+      </dl>
+    </article>
+  {% empty %}
+    <div class="rounded-lg border border-white/10 bg-[#111a21] p-10 text-center text-slate-400">No clients yet.</div>
+  {% endfor %}
+</section>
+{% endblock %}

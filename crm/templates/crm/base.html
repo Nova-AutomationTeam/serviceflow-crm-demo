@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ServiceFlow CRM{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    html { background: #091014; }
+    body { min-height: 100vh; }
+    .sf-grid {
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
+</head>
+<body class="bg-[#091014] text-slate-100 antialiased">
+  {% if request.resolver_match.url_name == "landing" %}
+    {% block landing_content %}{% endblock %}
+  {% else %}
+    <div class="min-h-screen lg:grid lg:grid-cols-[260px_1fr]">
+      <aside class="border-b border-white/10 bg-[#0d151b]/95 px-4 py-4 lg:min-h-screen lg:border-b-0 lg:border-r lg:px-5">
+        <a href="{% url 'crm:dashboard' %}" class="flex items-center gap-3">
+          <span class="grid h-9 w-9 place-items-center rounded-lg bg-cyan-400 text-sm font-black text-[#081014]">SF</span>
+          <span>
+            <span class="block text-sm font-semibold tracking-wide text-white">ServiceFlow CRM</span>
+            <span class="block text-xs text-slate-400">Service Business Demo</span>
+          </span>
+        </a>
+
+        <nav class="mt-5 flex gap-2 overflow-x-auto lg:block lg:space-y-2">
+          <a href="{% url 'crm:dashboard' %}" class="block min-w-max rounded-lg px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'dashboard' %}bg-white/10 text-white{% else %}text-slate-300 hover:bg-white/5 hover:text-white{% endif %}">Dashboard</a>
+          <a href="{% url 'crm:leads' %}" class="block min-w-max rounded-lg px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'leads' %}bg-white/10 text-white{% else %}text-slate-300 hover:bg-white/5 hover:text-white{% endif %}">Leads</a>
+          <a href="{% url 'crm:clients' %}" class="block min-w-max rounded-lg px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'clients' %}bg-white/10 text-white{% else %}text-slate-300 hover:bg-white/5 hover:text-white{% endif %}">Clients</a>
+          <a href="{% url 'crm:deals' %}" class="block min-w-max rounded-lg px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'deals' %}bg-white/10 text-white{% else %}text-slate-300 hover:bg-white/5 hover:text-white{% endif %}">Deals</a>
+          <a href="{% url 'crm:tasks' %}" class="block min-w-max rounded-lg px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'tasks' %}bg-white/10 text-white{% else %}text-slate-300 hover:bg-white/5 hover:text-white{% endif %}">Tasks</a>
+        </nav>
+      </aside>
+
+      <main class="min-w-0">
+        <header class="border-b border-white/10 bg-[#0b1217]/80 px-4 py-4 backdrop-blur sm:px-6 lg:px-8">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">ServiceFlow CRM</p>
+              <h1 class="mt-1 text-2xl font-semibold text-white">{% block page_title %}Dashboard{% endblock %}</h1>
+            </div>
+            <span class="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-medium text-cyan-100">Portfolio Demo · Read-only</span>
+          </div>
+        </header>
+
+        <div class="px-4 py-6 sm:px-6 lg:px-8">
+          {% block content %}{% endblock %}
+        </div>
+      </main>
+    </div>
+  {% endif %}
+</body>
+</html>
